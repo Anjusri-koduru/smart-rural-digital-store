@@ -1,3 +1,4 @@
+
 import axios from "axios";
 
 const api = axios.create({
@@ -10,6 +11,15 @@ const api = axios.create({
 // Automatically attach JWT token
 api.interceptors.request.use(
   (config) => {
+    // FormData uploads: let Axios/browser set multipart boundary
+    if (config.data instanceof FormData) {
+      if (config.headers.delete) {
+        config.headers.delete("Content-Type");
+      } else {
+        delete config.headers["Content-Type"];
+      }
+    }
+
     const token = localStorage.getItem("token");
 
     if (token) {

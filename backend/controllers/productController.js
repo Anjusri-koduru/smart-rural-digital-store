@@ -1,8 +1,19 @@
 const productService = require("../services/productService");
+const uploadToCloudinary = require("../utils/uploadToCloudinary");
 
 // Create product
 const createProduct = async (req, res) => {
   try {
+    let imageUrl = "";
+
+    if (req.file) {
+      const uploadedImage = await uploadToCloudinary(
+        req.file.buffer
+      );
+
+      imageUrl = uploadedImage.secure_url;
+    }
+
     const productData = {
       seller: req.user.id,
       name: req.body.name,
@@ -12,9 +23,7 @@ const createProduct = async (req, res) => {
       category: req.body.category,
       location: req.body.location || "",
       shopName: req.body.shopName || "",
-      image: req.file
-        ? `/uploads/products/${req.file.filename}`
-        : "",
+      image: imageUrl,
     };
 
     const product =
@@ -26,6 +35,8 @@ const createProduct = async (req, res) => {
       product,
     });
   } catch (error) {
+    console.error("Create product error:", error);
+
     res.status(400).json({
       success: false,
       message: error.message,
@@ -56,9 +67,7 @@ const getAllProducts = async (req, res) => {
 const getProductById = async (req, res) => {
   try {
     const product =
-      await productService.getProductById(
-        req.params.id
-      );
+      await productService.getProductById(req.params.id);
 
     res.status(200).json({
       success: true,
@@ -76,9 +85,7 @@ const getProductById = async (req, res) => {
 const getSellerProducts = async (req, res) => {
   try {
     const products =
-      await productService.getSellerProducts(
-        req.user.id
-      );
+      await productService.getSellerProducts(req.user.id);
 
     res.status(200).json({
       success: true,
@@ -101,8 +108,11 @@ const updateProduct = async (req, res) => {
     };
 
     if (req.file) {
-      updateData.image =
-        `/uploads/products/${req.file.filename}`;
+      const uploadedImage = await uploadToCloudinary(
+        req.file.buffer
+      );
+
+      updateData.image = uploadedImage.secure_url;
     }
 
     const product =
@@ -118,6 +128,8 @@ const updateProduct = async (req, res) => {
       product,
     });
   } catch (error) {
+    console.error("Update product error:", error);
+
     res.status(400).json({
       success: false,
       message: error.message,

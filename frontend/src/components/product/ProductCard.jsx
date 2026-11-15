@@ -15,14 +15,16 @@ const BACKEND_URL =
   "https://smart-rural-digital-store.onrender.com";
 
 const ProductCard = ({ product }) => {
-  const [favorite, setFavorite] =
-    useState(false);
+  const [favorite, setFavorite] = useState(false);
 
   const [favoriteLoading, setFavoriteLoading] =
     useState(false);
 
+  // Supports Cloudinary URLs and old Render image paths
   const imageUrl = product.image
-    ? `${BACKEND_URL}${product.image}`
+    ? product.image.startsWith("http")
+      ? product.image
+      : `${BACKEND_URL}${product.image}`
     : "/logo.png";
 
   const handleFavorite = async () => {
@@ -32,25 +34,17 @@ const ProductCard = ({ product }) => {
       setFavoriteLoading(true);
 
       if (favorite) {
-        await removeFavorite(
-          product._id
-        );
+        await removeFavorite(product._id);
 
         setFavorite(false);
 
-        toast.success(
-          "Removed from favorites"
-        );
+        toast.success("Removed from favorites");
       } else {
-        await addFavorite(
-          product._id
-        );
+        await addFavorite(product._id);
 
         setFavorite(true);
 
-        toast.success(
-          "Added to favorites"
-        );
+        toast.success("Added to favorites");
       }
     } catch (error) {
       toast.error(
@@ -76,11 +70,14 @@ const ProductCard = ({ product }) => {
           overflow: "hidden",
         }}
       >
-
         <img
           src={imageUrl}
           alt={product.name}
           className="product-image"
+          onError={(e) => {
+            e.currentTarget.onerror = null;
+            e.currentTarget.src = "/logo.png";
+          }}
           style={{
             width: "100%",
             height: "100%",
@@ -104,16 +101,13 @@ const ProductCard = ({ product }) => {
             }
           />
         </button>
-
       </div>
 
       {/* CONTENT */}
 
       <div className="product-card-content">
 
-        <h3>
-          {product.name}
-        </h3>
+        <h3>{product.name}</h3>
 
         <p className="product-category">
           {product.category}
@@ -142,9 +136,7 @@ const ProductCard = ({ product }) => {
             ₹{product.price}
           </strong>
 
-          <Link
-            to={`/products/${product._id}`}
-          >
+          <Link to={`/products/${product._id}`}>
             View
           </Link>
 

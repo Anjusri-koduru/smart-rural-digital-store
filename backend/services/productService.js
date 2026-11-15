@@ -3,7 +3,6 @@ const Product = require("../models/Product");
 // Add product
 const createProduct = async (data) => {
   const product = await Product.create(data);
-
   return product;
 };
 
@@ -43,10 +42,7 @@ const getAllProducts = async (filters = {}) => {
   }
 
   const products = await Product.find(query)
-    .populate(
-      "seller",
-      "name email phone profileImage"
-    )
+    .populate("seller", "name email phone profileImage")
     .sort(sort);
 
   return products;
@@ -55,10 +51,7 @@ const getAllProducts = async (filters = {}) => {
 // Get single product
 const getProductById = async (productId) => {
   const product = await Product.findById(productId)
-    .populate(
-      "seller",
-      "name email phone profileImage"
-    );
+    .populate("seller", "name email phone profileImage");
 
   if (!product) {
     throw new Error("Product not found");
@@ -102,6 +95,7 @@ const updateProduct = async (
     "location",
     "shopName",
     "isAvailable",
+    "image",
   ];
 
   allowedFields.forEach((field) => {

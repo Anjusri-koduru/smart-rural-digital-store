@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -19,23 +20,17 @@ const BACKEND_URL =
   "https://smart-rural-digital-store.onrender.com";
 
 const SellerProducts = () => {
-  const [products, setProducts] =
-    useState([]);
-
-  const [loading, setLoading] =
-    useState(true);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const fetchProducts = async () => {
     try {
       setLoading(true);
 
-      const response =
-        await getSellerProducts();
+      const response = await getSellerProducts();
 
       if (response.success) {
-        setProducts(
-          response.products || []
-        );
+        setProducts(response.products || []);
       }
     } catch (error) {
       toast.error(
@@ -51,29 +46,18 @@ const SellerProducts = () => {
     fetchProducts();
   }, []);
 
-  const handleDelete = async (
-    productId
-  ) => {
-    const confirmed =
-      window.confirm(
-        "Are you sure you want to delete this product?"
-      );
+  const handleDelete = async (productId) => {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this product?"
+    );
 
-    if (!confirmed) {
-      return;
-    }
+    if (!confirmed) return;
 
     try {
-      const response =
-        await deleteProduct(
-          productId
-        );
+      const response = await deleteProduct(productId);
 
       if (response.success) {
-        toast.success(
-          "Product deleted successfully"
-        );
-
+        toast.success("Product deleted successfully");
         fetchProducts();
       }
     } catch (error) {
@@ -90,15 +74,10 @@ const SellerProducts = () => {
 
   return (
     <div className="seller-page">
-
       <div className="seller-page-header">
-
         <div>
           <h1>My Products</h1>
-
-          <p>
-            Manage the products you sell
-          </p>
+          <p>Manage the products you sell</p>
         </div>
 
         <Link
@@ -108,22 +87,16 @@ const SellerProducts = () => {
           <Plus size={18} />
           Add Product
         </Link>
-
       </div>
 
       {products.length === 0 ? (
-
         <div className="seller-empty-state">
-
           <Package size={65} />
 
-          <h2>
-            No Products Yet
-          </h2>
+          <h2>No Products Yet</h2>
 
           <p>
-            Start selling by adding
-            your first product.
+            Start selling by adding your first product.
           </p>
 
           <Link
@@ -132,29 +105,22 @@ const SellerProducts = () => {
           >
             Add Product
           </Link>
-
         </div>
-
       ) : (
-
         <div className="seller-product-grid">
-
           {products.map((product) => {
-
-            const imageUrl =
-              product.image
-                ? `${BACKEND_URL}${product.image}`
-                : "/logo.png";
+            const imageUrl = product.image
+              ? product.image.startsWith("http")
+                ? product.image
+                : `${BACKEND_URL}${product.image}`
+              : "/logo.png";
 
             return (
-
               <div
                 className="seller-product-card"
                 key={product._id}
               >
-
                 {/* PRODUCT IMAGE */}
-
                 <div
                   className="seller-product-image"
                   style={{
@@ -164,10 +130,13 @@ const SellerProducts = () => {
                     overflow: "hidden",
                   }}
                 >
-
                   <img
                     src={imageUrl}
                     alt={product.name}
+                    onError={(event) => {
+                      event.currentTarget.onerror = null;
+                      event.currentTarget.src = "/logo.png";
+                    }}
                     style={{
                       width: "100%",
                       height: "100%",
@@ -175,31 +144,22 @@ const SellerProducts = () => {
                       display: "block",
                     }}
                   />
-
                 </div>
 
                 {/* PRODUCT CONTENT */}
-
                 <div className="seller-product-content">
-
-                  <h3>
-                    {product.name}
-                  </h3>
+                  <h3>{product.name}</h3>
 
                   <p className="seller-product-category">
                     {product.category}
                   </p>
 
                   <div className="seller-product-details">
-
-                    <strong>
-                      ₹{product.price}
-                    </strong>
+                    <strong>₹{product.price}</strong>
 
                     <span>
                       Stock: {product.quantity}
                     </span>
-
                   </div>
 
                   <div
@@ -217,7 +177,6 @@ const SellerProducts = () => {
                   </div>
 
                   <div className="seller-product-actions">
-
                     <Link
                       to={`/seller/products/edit/${product._id}`}
                       className="seller-edit-button"
@@ -229,26 +188,19 @@ const SellerProducts = () => {
                     <button
                       className="seller-delete-button"
                       onClick={() =>
-                        handleDelete(
-                          product._id
-                        )
+                        handleDelete(product._id)
                       }
                     >
                       <Trash2 size={16} />
                       Delete
                     </button>
-
                   </div>
-
                 </div>
-
               </div>
             );
           })}
-
         </div>
       )}
-
     </div>
   );
 };
