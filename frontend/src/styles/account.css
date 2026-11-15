@@ -1,0 +1,560 @@
+/* =========================================================
+   ACCOUNT SWITCH PAGE
+========================================================= */
+
+.account-switch-page {
+  min-height: calc(100vh - 70px);
+  background: #f7f8fa;
+  padding: 55px 20px 80px;
+}
+
+.account-switch-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.account-switch-header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.account-switch-main-icon {
+  width: 62px;
+  height: 62px;
+  margin: 0 auto 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff;
+  color: #172033;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+.account-switch-header h1 {
+  margin: 0;
+
+  color: #111827;
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -0.7px;
+}
+
+.account-switch-header p {
+  max-width: 600px;
+  margin: 10px auto 0;
+
+  color: #6b7280;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   CURRENT ACCOUNT
+========================================================= */
+
+.current-account-card {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 22px 24px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+
+  margin-bottom: 38px;
+}
+
+.current-account-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.current-account-icon {
+  width: 56px;
+  height: 56px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #f3f4f6;
+  color: #111827;
+
+  border-radius: 14px;
+}
+
+.current-account-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.current-account-info span {
+  color: #6b7280;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.current-account-info strong {
+  color: #111827;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.current-account-info small {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.current-account-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 8px 13px;
+
+  border-radius: 30px;
+
+  background: #ecfdf3;
+  color: #15803d;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   AVAILABLE ACCOUNT HEADER
+========================================================= */
+
+.available-account-title {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  margin-bottom: 17px;
+}
+
+.available-account-title h2 {
+  margin: 0;
+
+  color: #111827;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.available-account-title p {
+  margin: 5px 0 0;
+
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.role-count {
+  padding: 7px 12px;
+
+  border-radius: 20px;
+
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+
+  color: #374151;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   ROLE LIST
+========================================================= */
+
+.account-role-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+
+/* =========================================================
+   ROLE CARD
+========================================================= */
+
+.account-role-card {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+
+  min-height: 105px;
+
+  padding: 18px 20px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 17px;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.account-role-card:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.07);
+
+  border-color: #d1d5db;
+}
+
+.account-role-card.active {
+  border-color: #111827;
+
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+
+/* =========================================================
+   ROLE ICON
+========================================================= */
+
+.account-role-icon {
+  width: 58px;
+  height: 58px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 15px;
+
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.account-role-icon.admin {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.account-role-icon.seller {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.account-role-icon.customer {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+
+/* =========================================================
+   ROLE INFO
+========================================================= */
+
+.account-role-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.account-role-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.account-role-info h3 {
+  margin: 0;
+
+  color: #111827;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.account-role-info p {
+  margin: 6px 0 0;
+
+  color: #6b7280;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.current-role-badge {
+  padding: 4px 8px;
+
+  border-radius: 20px;
+
+  background: #111827;
+  color: #ffffff;
+
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   ACTION
+========================================================= */
+
+.account-role-action {
+  flex-shrink: 0;
+}
+
+.active-role-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 10px 14px;
+
+  color: #15803d;
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.account-switch-button {
+  min-width: 145px;
+
+  padding: 11px 16px;
+
+  border: none;
+  border-radius: 9px;
+
+  background: #111827;
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.account-switch-button:hover:not(:disabled) {
+  background: #273142;
+  transform: translateY(-1px);
+}
+
+.account-switch-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   NO ROLE
+========================================================= */
+
+.account-no-other-role {
+  margin-top: 20px;
+
+  padding: 35px 20px;
+
+  text-align: center;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+}
+
+.account-no-other-role svg {
+  color: #9ca3af;
+  margin-bottom: 10px;
+}
+
+.account-no-other-role h3 {
+  margin: 0;
+
+  color: #111827;
+  font-size: 17px;
+}
+
+.account-no-other-role p {
+  margin: 6px 0 0;
+
+  color: #6b7280;
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   INFO BOX
+========================================================= */
+
+.account-switch-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+
+  margin-top: 28px;
+  padding: 15px 17px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 13px;
+
+  color: #6b7280;
+}
+
+.account-switch-info svg {
+  flex-shrink: 0;
+  color: #374151;
+  margin-top: 1px;
+}
+
+.account-switch-info p {
+  margin: 0;
+
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .account-switch-page {
+    padding: 35px 14px 60px;
+  }
+
+  .account-switch-header {
+    margin-bottom: 25px;
+  }
+
+  .account-switch-main-icon {
+    width: 55px;
+    height: 55px;
+  }
+
+  .account-switch-header h1 {
+    font-size: 28px;
+  }
+
+  .account-switch-header p {
+    font-size: 14px;
+  }
+
+  .current-account-card {
+    align-items: flex-start;
+    gap: 15px;
+
+    padding: 18px;
+
+    flex-direction: column;
+  }
+
+  .current-account-status {
+    align-self: flex-start;
+  }
+
+  .available-account-title {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .role-count {
+    flex-shrink: 0;
+  }
+
+  .account-role-card {
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    padding: 17px;
+  }
+
+  .account-role-info {
+    padding-top: 2px;
+  }
+
+  .account-role-action {
+    width: 100%;
+    margin-left: 75px;
+  }
+
+  .account-switch-button {
+    width: 100%;
+  }
+
+  .active-role-label {
+    padding-left: 0;
+  }
+}
+
+
+@media (max-width: 450px) {
+
+  .account-switch-page {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .account-switch-header h1 {
+    font-size: 25px;
+  }
+
+  .current-account-left {
+    width: 100%;
+  }
+
+  .account-role-card {
+    gap: 12px;
+  }
+
+  .account-role-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .account-role-info h3 {
+    font-size: 15px;
+  }
+
+  .account-role-info p {
+    font-size: 12px;
+  }
+
+  .account-role-action {
+    margin-left: 62px;
+  }
+}

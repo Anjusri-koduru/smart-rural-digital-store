@@ -1,0 +1,291 @@
+.favorites-page,
+.following-page {
+  min-height: 100vh;
+  padding: 35px 20px;
+  background: #f7f8fa;
+}
+
+.favorites-container,
+.following-container {
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.favorites-header,
+.following-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.favorites-title,
+.following-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.favorites-title h1,
+.following-title h1 {
+  margin: 0;
+  font-size: 29px;
+  color: #111827;
+}
+
+.favorites-header p,
+.following-header p {
+  margin: 7px 0 0;
+  color: #6b7280;
+}
+
+.favorites-count,
+.following-count {
+  padding: 9px 16px;
+  border-radius: 20px;
+  background: #e5e7eb;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.favorites-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fill, minmax(220px, 1fr));
+  gap: 22px;
+}
+
+.favorite-product-wrapper {
+  position: relative;
+}
+
+.favorite-remove-button {
+  width: 100%;
+  margin-top: 8px;
+  padding: 9px 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: white;
+  color: #374151;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.favorite-remove-button:hover {
+  background: #f3f4f6;
+}
+
+.favorites-empty,
+.following-empty {
+  padding: 70px 20px;
+  text-align: center;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+}
+
+.favorites-empty-icon,
+.following-empty-icon {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.favorites-empty h2,
+.following-empty h2 {
+  margin: 0 0 8px;
+  color: #111827;
+}
+
+.favorites-empty p,
+.following-empty p {
+  max-width: 450px;
+  margin: 0 auto 22px;
+  color: #6b7280;
+}
+
+.favorites-empty button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 18px;
+  border: none;
+  border-radius: 9px;
+  background: #111827;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ================= FOLLOWING SELLERS ================= */
+
+.following-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fill, minmax(300px, 1fr));
+  gap: 18px;
+}
+
+.seller-follow-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 15px;
+}
+
+.seller-follow-avatar {
+  flex-shrink: 0;
+  width: 65px;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.seller-follow-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.seller-follow-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.seller-follow-info h3 {
+  margin: 0 0 4px;
+  color: #111827;
+}
+
+.seller-follow-info p {
+  margin: 0 0 6px;
+  color: #6b7280;
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.seller-follow-info span {
+  font-size: 12px;
+  font-weight: 700;
+  color: #374151;
+}
+
+.unfollow-button {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: white;
+  color: #374151;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.unfollow-button:hover {
+  background: #f3f4f6;
+}
+
+@media (max-width: 700px) {
+  .favorites-header,
+  .following-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .seller-follow-card {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .unfollow-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 450px) {
+  .favorites-page,
+  .following-page {
+    padding: 25px 15px;
+  }
+
+  .favorites-title h1,
+  .following-title h1 {
+    font-size: 24px;
+  }
+
+  .favorites-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* ================= PRODUCT DETAILS FAVORITE ================= */
+
+.favorite-details-button.active {
+  background: #fee2e2;
+  color: #dc2626;
+  border-color: #fecaca;
+}
+
+.favorite-details-button.active:hover {
+  background: #fecaca;
+}
+
+/* ================= SELLER FOLLOW ================= */
+
+.seller-follow-section {
+  margin: 20px 0;
+}
+
+.seller-follow-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 9px;
+  background: white;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.seller-follow-button:hover {
+  background: #f3f4f6;
+}
+
+.seller-follow-button.following {
+  background: #111827;
+  color: white;
+  border-color: #111827;
+}
+
+.seller-follow-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
