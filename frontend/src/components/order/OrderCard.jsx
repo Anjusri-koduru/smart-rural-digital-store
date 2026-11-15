@@ -3,7 +3,7 @@ import { Package, Calendar, IndianRupee } from "lucide-react";
 
 import OrderStatus from "./OrderStatus";
 
-const BACKEND_URL = "http://localhost:5000";
+const BACKEND_URL = "https://smart-rural-digital-store.onrender.com";
 
 const OrderCard = ({ order, onCancel }) => {
   const firstItem = order.items?.[0];

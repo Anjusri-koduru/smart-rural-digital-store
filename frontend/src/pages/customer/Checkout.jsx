@@ -20,7 +20,7 @@ import {
 
 import Loader from "../../components/common/Loader";
 
-const BACKEND_URL = "http://localhost:5000";
+const BACKEND_URL = "https://smart-rural-digital-store.onrender.com";
 
 const Checkout = () => {
   const navigate = useNavigate();

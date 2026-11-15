@@ -91,7 +91,7 @@ const Sellers = () => {
 
                 {seller.profileImage ? (
                   <img
-                    src={`http://localhost:5000${seller.profileImage}`}
+                    src={`https://smart-rural-digital-store.onrender.com${seller.profileImage}`}
                     alt={seller.name}
                   />
                 ) : (

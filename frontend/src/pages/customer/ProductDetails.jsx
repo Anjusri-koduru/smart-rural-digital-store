@@ -38,7 +38,7 @@ import {
 } from "../../services/recommendationInteractionService";
 
 const BACKEND_URL =
-  "http://localhost:5000";
+  "https://smart-rural-digital-store.onrender.com";
 
 const ProductDetails = () => {
   const { id } = useParams();

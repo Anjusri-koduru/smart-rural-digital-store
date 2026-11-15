@@ -92,7 +92,7 @@ const Customers = () => {
 
                 {customer.profileImage ? (
                   <img
-                    src={`http://localhost:5000${customer.profileImage}`}
+                    src={`https://smart-rural-digital-store.onrender.com${customer.profileImage}`}
                     alt={customer.name}
                   />
                 ) : (

@@ -16,7 +16,7 @@ import {
 } from "../../services/productService";
 
 const BACKEND_URL =
-  "http://localhost:5000";
+  "https://smart-rural-digital-store.onrender.com";
 
 const SellerProducts = () => {
   const [products, setProducts] =

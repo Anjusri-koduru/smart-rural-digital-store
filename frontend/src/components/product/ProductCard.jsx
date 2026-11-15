@@ -12,7 +12,7 @@ import {
 } from "../../services/wishlistService";
 
 const BACKEND_URL =
-  "http://localhost:5000";
+  "https://smart-rural-digital-store.onrender.com";
 
 const ProductCard = ({ product }) => {
   const [favorite, setFavorite] =
